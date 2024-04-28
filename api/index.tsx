@@ -122,7 +122,7 @@ app.frame('/', async (c) => {
 
   // console.log('followerCount', followerCount);
   
-  const uriTip = "https://warpcast.com/dangs.eth/0xc9d485a6";
+  const uriTip = "https://warpcast.com/dangs.eth/0x96d39fed";
   const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dthA76n5f82ws`);
 
   return c.res({
@@ -207,7 +207,7 @@ app.frame('/:fid/dthA76n5f82ws', async (c) => {
   remaining = allowance - tips_given;
   
 
-  const uriTip = "https://warpcast.com/dangs.eth/0xc9d485a6";
+  const uriTip = "https://warpcast.com/dangs.eth/0x96d39fed";
   const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dthA76n5f82ws`);
 
   return c.res({
