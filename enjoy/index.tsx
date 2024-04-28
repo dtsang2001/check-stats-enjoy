@@ -12,7 +12,7 @@ import { neynar } from 'frog/middlewares'
 //   runtime: 'edge',
 // }
 
-const SITE_URL = "https://f70d-14-191-174-231.ngrok-free.app/";
+const SITE_URL = "https://check-stats-enjoy.vercel.app/";
 
 export const app = new Frog({
   assetsPath: '/',
