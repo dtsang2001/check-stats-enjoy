@@ -123,7 +123,7 @@ app.frame('/', async (c) => {
   // console.log('followerCount', followerCount);
   
   const uriTip = "https://warpcast.com/dangs.eth/0xc9d485a6";
-  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dthA76n5f82ws`);
+  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}enjoy/${fid}/dthA76n5f82ws`);
 
   return c.res({
     imageOptions: {
@@ -208,7 +208,7 @@ app.frame('/:fid/dthA76n5f82ws', async (c) => {
   
 
   const uriTip = "https://warpcast.com/dangs.eth/0xc9d485a6";
-  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dthA76n5f82ws`);
+  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}enjoy/${fid}/dthA76n5f82ws`);
 
   return c.res({
     imageOptions: {
