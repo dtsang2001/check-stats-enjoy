@@ -125,7 +125,7 @@ app.frame('/', async (c) => {
   // console.log('followerCount', followerCount);
   
   const uriTip = "https://warpcast.com/dangs.eth/0x96d39fed";
-  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dthA76n5f82ws`);
+  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dthA76n5f84ws`);
 
   return c.res({
     imageOptions: {
@@ -161,11 +161,11 @@ app.frame('/', async (c) => {
   })
 })
 
-app.frame('/:fid/dthA76n5f82ws', async (c) => {
+app.frame('/:fid/dthA76n5f84ws', async (c) => {
 
   const { req } = c
 
-  const regex = /\/([0-9]*)\/dthA76n5f82ws/gm;
+  const regex = /\/([0-9]*)\/dthA76n5f84ws/gm;
   const fid = [...req.url.matchAll(regex)][0][1];
   
   var user = await fetch("https://client.warpcast.com/v2/user-by-fid?fid="+fid ,{ method:"GET" });
@@ -210,7 +210,7 @@ app.frame('/:fid/dthA76n5f82ws', async (c) => {
   
 
   const uriTip = "https://warpcast.com/dangs.eth/0x96d39fed";
-  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dthA76n5f82ws`);
+  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dthA76n5f84ws`);
 
   return c.res({
     imageOptions: {
