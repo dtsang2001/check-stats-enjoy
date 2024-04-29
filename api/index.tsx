@@ -80,6 +80,8 @@ function Content(balance:string, remaining:number, unique_mints:string, unique_c
 }
 
 app.frame('/', async (c) => {
+  console.log(1);
+  
   const { buttonValue, inputText, status, frameData, verified } = c
   const fruit = inputText || buttonValue
   const { fid } = frameData || {} 
@@ -90,12 +92,13 @@ app.frame('/', async (c) => {
   var { ethAddresses } = verifiedAddresses || {}
 
   if (typeof ethAddresses != 'undefined') {
-    var data = {"sql":{"query":"SELECT * FROM snapshot.apr_21 WHERE LOWER(wallet) = :wallet LIMIT 1","parameters":[{"name":"wallet","type":"string","value":ethAddresses[0]}]}};
+    var data = {"parameters":[{"name":"wallet","type":"string","value":ethAddresses[0]}]};
     var a = await fetch("https://api.usw2a1.rockset.com/v1/orgs/self/ws/frontend/lambdas/user_from_leaderboard/tags/latest" ,{ method:"POST", headers: {
       'Content-Type': 'application/json', 
       'Authorization': 'ApiKey 4caspW3wv3VHBmb8jHfYHXRulo39cLrQGlaqFyFMlgszKCcraI8hMoFznFwSdMRw'
     }, body: JSON.stringify(data)});
     var { results } = JSON.parse(await a.text());
+    
 
     if (results.length) {
       results = results[0];
@@ -107,7 +110,6 @@ app.frame('/', async (c) => {
       }, body: JSON.stringify(datac)});
 
       tips_given = parseInt(JSON.parse(await a.text()).results[0].tips_given || 0);
-      
 
     } else {
       results = {};
@@ -177,7 +179,7 @@ app.frame('/:fid/dthA76n5f82ws', async (c) => {
   var { wallet_address } = allowance || {};
 
   if (typeof wallet_address != 'undefined') {
-    var data = {"sql":{"query":"SELECT * FROM snapshot.apr_21 WHERE LOWER(wallet) = :wallet LIMIT 1","parameters":[{"name":"wallet","type":"string","value":wallet_address}]}};
+    var data = {"parameters":[{"name":"wallet","type":"string","value":wallet_address}]};
     var a = await fetch("https://api.usw2a1.rockset.com/v1/orgs/self/ws/frontend/lambdas/user_from_leaderboard/tags/latest" ,{ method:"POST", headers: {
       'Content-Type': 'application/json', 
       'Authorization': 'ApiKey 4caspW3wv3VHBmb8jHfYHXRulo39cLrQGlaqFyFMlgszKCcraI8hMoFznFwSdMRw'
