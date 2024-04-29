@@ -91,7 +91,7 @@ app.frame('/', async (c) => {
 
   if (typeof ethAddresses != 'undefined') {
     var data = {"sql":{"query":"SELECT * FROM snapshot.apr_21 WHERE LOWER(wallet) = :wallet LIMIT 1","parameters":[{"name":"wallet","type":"string","value":ethAddresses[0]}]}};
-    var a = await fetch("https://api.usw2a1.rockset.com/v1/orgs/self/queries" ,{ method:"POST", headers: {
+    var a = await fetch("https://api.usw2a1.rockset.com/v1/orgs/self/ws/frontend/lambdas/user_from_leaderboard/tags/latest" ,{ method:"POST", headers: {
       'Content-Type': 'application/json', 
       'Authorization': 'ApiKey 4caspW3wv3VHBmb8jHfYHXRulo39cLrQGlaqFyFMlgszKCcraI8hMoFznFwSdMRw'
     }, body: JSON.stringify(data)});
@@ -101,7 +101,7 @@ app.frame('/', async (c) => {
       results = results[0];
 
       var datac = {"parameters":[{"name":"wallet","type":"string","value":ethAddresses[0]}]};
-      var a = await fetch("https://api.usw2a1.rockset.com/v1/orgs/self/ws/gold/lambdas/current_tips_by_x/tags/latest" ,{ method:"POST", headers: {
+      var a = await fetch("https://api.usw2a1.rockset.com/v1/orgs/self/ws/frontend/lambdas/current_tips_by_x/tags/latest" ,{ method:"POST", headers: {
         'Content-Type': 'application/json', 
         'Authorization': 'ApiKey 4caspW3wv3VHBmb8jHfYHXRulo39cLrQGlaqFyFMlgszKCcraI8hMoFznFwSdMRw'
       }, body: JSON.stringify(datac)});
@@ -178,7 +178,7 @@ app.frame('/:fid/dthA76n5f82ws', async (c) => {
 
   if (typeof wallet_address != 'undefined') {
     var data = {"sql":{"query":"SELECT * FROM snapshot.apr_21 WHERE LOWER(wallet) = :wallet LIMIT 1","parameters":[{"name":"wallet","type":"string","value":wallet_address}]}};
-    var a = await fetch("https://api.usw2a1.rockset.com/v1/orgs/self/queries" ,{ method:"POST", headers: {
+    var a = await fetch("https://api.usw2a1.rockset.com/v1/orgs/self/ws/frontend/lambdas/user_from_leaderboard/tags/latest" ,{ method:"POST", headers: {
       'Content-Type': 'application/json', 
       'Authorization': 'ApiKey 4caspW3wv3VHBmb8jHfYHXRulo39cLrQGlaqFyFMlgszKCcraI8hMoFznFwSdMRw'
     }, body: JSON.stringify(data)});
@@ -188,7 +188,7 @@ app.frame('/:fid/dthA76n5f82ws', async (c) => {
       results = results[0];
 
       var datac = {"parameters":[{"name":"wallet","type":"string","value":wallet_address}]};
-      var a = await fetch("https://api.usw2a1.rockset.com/v1/orgs/self/ws/gold/lambdas/current_tips_by_x/tags/latest" ,{ method:"POST", headers: {
+      var a = await fetch("https://api.usw2a1.rockset.com/v1/orgs/self/ws/frontend/lambdas/current_tips_by_x/tags/latest" ,{ method:"POST", headers: {
         'Content-Type': 'application/json', 
         'Authorization': 'ApiKey 4caspW3wv3VHBmb8jHfYHXRulo39cLrQGlaqFyFMlgszKCcraI8hMoFznFwSdMRw'
       }, body: JSON.stringify(datac)});
