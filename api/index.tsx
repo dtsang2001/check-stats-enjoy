@@ -79,6 +79,18 @@ function Content(balance:string, remaining:number, unique_mints:string, unique_c
         </Row>;
 }
 
+function MakeID(length:number) {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  let counter = 0;
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    counter += 1;
+  }
+  return result;
+}
+
 app.frame('/', async (c) => {
   console.log(1);
   
@@ -124,8 +136,9 @@ app.frame('/', async (c) => {
 
   // console.log('followerCount', followerCount);
   
+  const ids = MakeID(7);
   const uriTip = "https://warpcast.com/dangs.eth/0x96d39fed";
-  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dthA76n5f84ws`);
+  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dangs${ids}`);
 
   return c.res({
     imageOptions: {
@@ -161,11 +174,11 @@ app.frame('/', async (c) => {
   })
 })
 
-app.frame('/:fid/dthA76n5f84ws', async (c) => {
+app.frame('/:fid/:secret', async (c) => {
 
   const { req } = c
 
-  const regex = /\/([0-9]*)\/dthA76n5f84ws/gm;
+  const regex = /\/([0-9]*)\/dangs[0-9a-zA-Z]*/gm;
   const fid = [...req.url.matchAll(regex)][0][1];
   
   var user = await fetch("https://client.warpcast.com/v2/user-by-fid?fid="+fid ,{ method:"GET" });
@@ -208,9 +221,9 @@ app.frame('/:fid/dthA76n5f84ws', async (c) => {
 
   remaining = allowance - tips_given;
   
-
+  const ids = MakeID(7);
   const uriTip = "https://warpcast.com/dangs.eth/0x96d39fed";
-  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dthA76n5f84ws`);
+  const uriShare = encodeURI(`https://warpcast.com/~/compose?text=Check your $ENJOY Stats. Frame by @dangs.eth &embeds[]=${SITE_URL}api/${fid}/dangs${ids}`);
 
   return c.res({
     imageOptions: {
