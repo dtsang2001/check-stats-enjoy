@@ -121,7 +121,11 @@ app.frame('/', async (c) => {
         'Authorization': 'ApiKey 4caspW3wv3VHBmb8jHfYHXRulo39cLrQGlaqFyFMlgszKCcraI8hMoFznFwSdMRw'
       }, body: JSON.stringify(datac)});
 
-      tips_given = parseInt(JSON.parse(await a.text()).results[0].tips_given || 0);
+      var current_tips = JSON.parse(await a.text()).results;
+
+      if (current_tips.length > 0) {
+        tips_given = current_tips[0].tips_given || 0;
+      }
 
     } else {
       results = {};
@@ -208,7 +212,11 @@ app.frame('/:fid/:secret', async (c) => {
         'Authorization': 'ApiKey 4caspW3wv3VHBmb8jHfYHXRulo39cLrQGlaqFyFMlgszKCcraI8hMoFznFwSdMRw'
       }, body: JSON.stringify(datac)});
 
-      tips_given = parseInt(JSON.parse(await a.text()).results[0].tips_given || 0);
+      var current_tips = JSON.parse(await a.text()).results;
+
+      if (current_tips.length > 0) {
+        tips_given = current_tips[0].tips_given || 0;
+      }
 
     } else {
       results = {};
