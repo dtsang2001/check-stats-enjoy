@@ -4,7 +4,6 @@ import { devtools } from 'frog/dev'
 import { serveStatic } from 'frog/serve-static'
 // import { neynar } from 'frog/hubs'
 import { handle } from 'frog/vercel'
-import { pinata } from 'frog/hubs'
 import { neynar } from 'frog/middlewares'
 
 // Uncomment to use Edge Runtime.
@@ -19,7 +18,14 @@ export const app = new Frog({
   basePath: '/api',
   ui: { vars },
   // Supply a Hub to enable frame verification.
-  hub: pinata()
+  hub: {
+    apiUrl: "https://hubs.airstack.xyz",
+    fetchOptions: {
+      headers: {
+        "x-airstack-hubs": "19d52024f5e694eedbdf857f4a7e84bd8",
+      }
+    }
+  }
 }).use(
   neynar({
     apiKey: 'NEYNAR_FROG_FM',
@@ -191,9 +197,9 @@ app.frame('/:fid/:secret', async (c) => {
   var { url } = pfp || {}
   var remaining = 0, tips_given = 0;
 
-  var degen = await fetch("https://www.degentip.me/api/get_allowance?fid="+fid ,{ method:"GET" });
-  var { allowance } = JSON.parse(await degen.text()) || {};
-  var { wallet_address } = allowance || {};
+  var verifications = await fetch("https://client.warpcast.com/v2/verifications?fid="+fid+"&limit=15" ,{ method:"GET" });
+  var { result } = JSON.parse(await verifications.text()) || {};
+  var wallet_address = result.verifications[0].address || "";
 
   if (typeof wallet_address != 'undefined') {
     var data = {"parameters":[{"name":"wallet","type":"string","value":wallet_address}]};
