@@ -14,6 +14,7 @@ import { neynar } from 'frog/middlewares'
 const SITE_URL = "https://check-stats-enjoy.vercel.app/";
 
 export const app = new Frog({
+  title: 'Check Starts Enjoy',
   assetsPath: '/',
   basePath: '/api',
   ui: { vars },
